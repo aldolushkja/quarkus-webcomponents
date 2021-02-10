@@ -1,0 +1,40 @@
+version: "3.8"
+services:
+  pg:
+    build:
+      context: src/main/docker/
+      dockerfile: Dockerfile.jvm
+    #    build: Dockerfile.jvm
+    container_name: pg
+    #    environment:
+    #      - "JAEGER_HOST=jaeger"
+    #      - "CONTENT_MP_REST_URL=http://content:8080/content/resources"
+    #    healthcheck:
+    #      test: ["CMD", "curl", "-f", "http://localhost:9990/health"]
+    #      interval: 5s
+    #      timeout: 1s
+    #      retries: 3
+    ports:
+      - "8081:8080"
+  #      - "9990:9990"
+  #  content:
+  #    build: content/content/
+  #    container_name: content
+  #    environment:
+  #      - "JAEGER_HOST=jaeger"
+  #    healthcheck:
+  #      test: ["CMD", "curl", "-f", "http://localhost:9990/health"]
+  #      interval: 5s
+  #      timeout: 1s
+  #      retries: 3
+  #    ports:
+  #      - "8081:8080"
+  #      - "9991:9990"
+  jaeger:
+    container_name: jaeger
+    image: jaegertracing/all-in-one
+    ports:
+      - "6831:6831/udp"
+      - "5778:5778"
+      - "14268:14268"
+      - "16686:16686"
