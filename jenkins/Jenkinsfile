@@ -18,7 +18,7 @@ pipeline {
         }
         stage('Run native image') {
             steps {
-                sh 'target/pg-runner'
+                sh 'target/pg-runner &'
             }
         }
     }
