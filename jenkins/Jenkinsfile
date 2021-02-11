@@ -1,0 +1,28 @@
+pipeline {
+    agent {
+        docker {
+            image 'maven:3-alpine'
+            args '-v /root/.m2:/root/.m2'
+        }
+    }
+    options {
+        skipStagesAfterUnstable()
+    }
+    stages {
+        stage('Build native image') {
+            steps {
+                sh 'mvn -B clean package -Pnative -DskipTests -Dquarkus.native.container-build=true'
+            }
+        }
+        stage('Clean Old Containers') {
+            steps {
+                sh 'echo "TODO clean old resources..."'
+            }
+        }
+        stage('Run native image') {
+            steps {
+                sh 'target/pg-runner'
+            }
+        }
+    }
+}
