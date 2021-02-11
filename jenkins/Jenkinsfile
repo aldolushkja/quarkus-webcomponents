@@ -8,10 +8,10 @@ pipeline {
     stages {
         stage('Build native image') {
             steps {
-                sh 'mvn -B clean package -Pnative -DskipTests -Dquarkus.native.container-build=true'
+                sh 'mvn package -Pnative -DskipTests'
             }
         }
-        stage('Clean Old Containers') {
+        stage('Kill old process running..') {
             steps {
                 sh 'echo "TODO clean old resources..."'
             }
