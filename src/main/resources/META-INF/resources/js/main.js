@@ -1,3 +1,5 @@
+const serverUrl = 'http://localhost:9001';
+
 // DOM elements
 const resultEl = document.getElementById('result')
 const lengthEl = document.getElementById('length')
@@ -49,22 +51,22 @@ saveEl.addEventListener('click', () => {
         console.log('Could not save empty password');
         return;
     }
-    saveToQuarkus(password);
+    savaData(password);
     resultEl.innerText = '';
 });
 
 //Save password to DB with Quarkus BE solution
-async function saveToQuarkus(pwd) {
+async function savaData(pwd) {
     const settings = {
         method: 'POST',
         headers: {
-            Accept: 'application/json',
+            'Accept': 'application/json',
             'Content-Type': 'text/plain',
         },
         body: pwd
     }
-    const response = await fetch('http://localhost:8080/password',settings);
-    if(response.status === 201){
+    const response = await fetch(serverUrl + '/password', settings);
+    if (response.status === 201) {
         console.log("Save to quarkus was successful! Awesome");
     } else {
         console.log("Error saving to quarkus")
@@ -96,11 +98,8 @@ function generatePassword(lower, upper, number, symbol, length) {
         });
     }
 
-    const finalPassword = generatePassword.slice(0, length);
-    return finalPassword;
+    return generatePassword.slice(0, length);
 }
-
-//Save password into DB
 
 
 // Generator functions
