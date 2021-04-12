@@ -67,10 +67,30 @@ async function savaData(pwd) {
     }
     const response = await fetch(serverUrl + '/password', settings);
     if (response.status === 201) {
-        console.log("Save to quarkus was successful! Awesome");
+        toast('Password saved', 'success')
     } else {
-        console.log("Error saving to quarkus")
+        toast('Ops! Something went wrong :-(', 'error')
     }
+}
+
+
+function toast(msg, type) {
+    const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.addEventListener('mouseenter', Swal.stopTimer)
+            toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+    })
+
+    Toast.fire({
+        icon: type,
+        title: msg,
+    })
 }
 
 // Generate password function
