@@ -1,4 +1,4 @@
-package org.acme.quarkus.sample;
+package it.aldolushkja.passgen;
 
 public enum Status {
     ACTIVE, DELETED, NOT_ACTIVE
