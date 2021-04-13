@@ -17,14 +17,14 @@ public class PasswordRepository implements PanacheRepository<PasswordEntity> {
   }
 
   public List<PasswordEntity> findActive() {
-    return list("status", Status.ACTIVE);
+    return list("status", PasswordStatus.ACTIVE);
   }
 
   public List<PasswordEntity> findDeleted() {
-    return list("status", Status.DELETED);
+    return list("status", PasswordStatus.DELETED);
   }
 
   public List<PasswordEntity> findNotActive() {
-    return list("status", Status.NOT_ACTIVE);
+    return list("status", PasswordStatus.NOT_ACTIVE);
   }
 }

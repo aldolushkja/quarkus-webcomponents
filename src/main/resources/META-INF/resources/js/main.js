@@ -48,7 +48,7 @@ clipboardEl.addEventListener('click', () => {
 saveEl.addEventListener('click', () => {
     const password = resultEl.innerText;
     if (!password) {
-        console.log('Could not save empty password');
+        toast('Inserire una password prima di salvare', 'warning')
         return;
     }
     savaData(password);

@@ -16,7 +16,7 @@ public class PasswordService {
     passwordEntity.setPassword(BCrypt.withDefaults().hashToString(10, pwd.toCharArray()));
     passwordEntity.setCreatedAt(LocalDateTime.now());
     passwordEntity.setUpdateAt(LocalDateTime.now());
-    passwordEntity.setStatus(Status.ACTIVE);
+    passwordEntity.setPasswordStatus(PasswordStatus.ACTIVE);
     return passwordEntity;
   }
 

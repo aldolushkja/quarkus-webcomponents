@@ -22,5 +22,5 @@ public class PasswordEntity {
   private LocalDateTime updateAt;
 
   @Enumerated(EnumType.STRING)
-  private Status status;
+  private PasswordStatus passwordStatus;
 }
