@@ -1,5 +1,6 @@
 import { html, render } from '../deps/lit-html.js';
 
+const serverUri = "http://localhost:9001";
 class Login extends HTMLElement {
 
     connectedCallback() {
@@ -43,20 +44,24 @@ class Login extends HTMLElement {
             body: JSON.stringify(payload, "", 4)
         };
 
-        const response = await fetch("http://localhost:9001/login", settings);
+        const response = await fetch(serverUri + "/login", settings);
         const json = await response.json();
         console.log(json)
         if (response.status !== 200) {
             toast('Login failed, please retry....', 'error');
             usernameEl.value = '';
             passwordEl.value = '';
+
+            delay();
+            window.location.assign(serverUri);
             return;
         }
         console.log('JSON=' + json);
 
         toast('Login successful', 'info');
+        delay();
 
-
+        window.location.assign(serverUri + "/passgenerator.html");
     };
 }
 
@@ -81,4 +86,9 @@ function toast(msg, type) {
         icon: type,
         title: msg,
     })
+}
+
+const delay = async() => {
+    await sleep(5000);
+    //code to be executed
 }

@@ -21,11 +21,9 @@ public class CSRFTokenResource {
   @Produces(MediaType.APPLICATION_JSON)
   public Response buildOne() {
     String token = RandomStringUtils.randomAscii(128);
-    JsonObject payload =
-        Json.createObjectBuilder()
-            .add("message", "CSRF Token initialized")
-            .add("token", token)
-            .build();
+    System.out.println("CSRFTokenResource.buildOne() ---- token= " + token);
+    JsonObject payload = Json.createObjectBuilder().add("message", "CSRF Token initialized")
+        .add("token", token).build();
 
     return Response.status(Response.Status.OK).entity(payload).build();
   }
