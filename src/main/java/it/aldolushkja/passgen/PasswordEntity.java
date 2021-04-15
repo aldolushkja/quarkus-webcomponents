@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 @Table(name = "pass_store")
 public class PasswordEntity {
 
-  @Id @GeneratedValue private Long id;
+  @Id @GeneratedValue(strategy = GenerationType.IDENTITY) private Long id;
 
   @Column(name = "pass_gen")
   private String password;

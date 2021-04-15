@@ -16,7 +16,7 @@ class CSRFToken extends HTMLElement {
             return;
         }
         const json = await response.json();
-        const {message, token} = json;
+        const { message, token } = json;
         console.log(message);
         return token;
     }

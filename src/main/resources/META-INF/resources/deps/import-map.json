@@ -1,5 +1,6 @@
 {
   "imports": {
+    "canvas-confetti": "./canvas-confetti.js",
     "lit-html": "./lit-html.js"
   }
 }
