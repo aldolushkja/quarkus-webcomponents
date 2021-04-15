@@ -12,26 +12,26 @@ class Login extends HTMLElement {
                 <input type="text" id="username"></input>
             <label for="password">Password</label> 
             <input type="password" id="password"></input>
-        <button class="btn btn-large" id="loginBtn" @click=${this.clickHandler}>Login</button>
+        <button class="btn btn-large" id="loginBtn" @click=${this.doLogin}>Login</button>
         </div>
     </div>
         `;
 
         render(content, this);
     }
-    console.log('boooh')
-    console.log('booo111h')
-    doLogin = {
+    async doLogin() {
         const usernameEl = document.getElementById("username");
         const passwordEl = document.getElementById("password");
-        // var tokenEl = document.getElementById('csrf_token');
+        const tokenEl = document.getElementById("csrf_token");
         console.log(usernameEl.value + " - " + passwordEl.value);
 
         var payload = {
-            'csrf_token': tokenEl.value,
+            'csrf_token': tokenEl.innerText,
             'username': usernameEl.value,
             'password': passwordEl.value,
         };
+
+        console.log('payload=' + JSON.stringify(payload, "", 4));
 
 
         const settings = {
@@ -40,19 +40,21 @@ class Login extends HTMLElement {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',
             },
-            body: payload
+            body: JSON.stringify(payload, "", 4)
         };
 
         const response = await fetch("http://localhost:9001/login", settings);
+        const json = await response.json();
+        console.log(json)
+        if (response.status !== 200) {
+            toast('Login failed, please retry....', 'error');
+            usernameEl.value = '';
+            passwordEl.value = '';
+            return;
+        }
+        console.log('JSON=' + json);
 
-        // if (response.status !== 200) {
-        //     toast('Login failed, please retry....', 'error');
-        //     return;
-        // }
-        // const json = await response.json;
-        // console.log('JSON=' + json);
-
-        // toast('Login successful', 'info');
+        toast('Login successful', 'info');
 
 
     };

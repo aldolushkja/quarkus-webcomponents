@@ -1,4 +1,4 @@
-package it.aldolushkja;
+package it.aldolushkja.passgen;
 
 import javax.json.Json;
 import javax.json.JsonObject;
@@ -18,6 +18,7 @@ public class LoginResource {
     @POST
     public Response doLogin(JsonObject payload) {
         String token = payload.getString("csrf_token");
+        System.out.println("LoginResource.doLogin()---- token=" + token);
         if (token == null || token.trim().length() == 0) {
             return Response
                     .status(400).entity(Json.createObjectBuilder()

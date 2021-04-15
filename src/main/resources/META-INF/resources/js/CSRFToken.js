@@ -5,6 +5,7 @@ class CSRFToken extends HTMLElement {
     }
 
     async connectedCallback() {
+        this.id = 'csrf_token';
         this.style.display = 'none';
         this.innerText = await this.fetchFromServer();
     }
