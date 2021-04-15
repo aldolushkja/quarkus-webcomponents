@@ -20,6 +20,7 @@ class Login extends HTMLElement {
         render(content, this);
     }
     console.log('boooh')
+    console.log('booo111h')
     doLogin = {
         const usernameEl = document.getElementById("username");
         const passwordEl = document.getElementById("password");
