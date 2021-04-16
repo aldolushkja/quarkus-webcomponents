@@ -1,3 +1,5 @@
+import { serverUrl } from "../service/Constants.js";
+
 class CSRFToken extends HTMLElement {
     constructor() {
         super();
@@ -7,11 +9,11 @@ class CSRFToken extends HTMLElement {
     async connectedCallback() {
         this.id = 'csrf_token';
         this.style.display = 'none';
-        this.innerText = await this.fetchFromServer();
+        this.innerText = await this.fetchCsrfToken();
     }
 
-    async fetchFromServer() {
-        const response = await fetch("http://localhost:9001/csrf-token");
+    async fetchCsrfToken() {
+        const response = await fetch(serverUrl + "/csrf-token");
         if (response.status !== 200) {
             console.log("No token available, invalid form submit")
             return;

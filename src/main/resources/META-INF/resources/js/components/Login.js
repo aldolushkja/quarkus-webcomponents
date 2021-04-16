@@ -50,7 +50,7 @@ class Login extends HTMLElement {
             toast('Login failed, please retry....', 'error');
             usernameEl.value = '';
             passwordEl.value = '';
-            window.location.assign(serverUrl);
+            // window.location.assign(serverUrl);
             return;
         }
         console.log('JSON=' + json);
