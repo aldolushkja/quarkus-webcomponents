@@ -1,6 +1,7 @@
-import { html, render } from '../deps/lit-html.js';
+import { html, render } from '../../deps/lit-html.js';
+import { toast } from '../service/Commons.js';
+import { serverUrl } from '../service/Constants.js';
 
-const serverUri = "http://localhost:9001";
 class Login extends HTMLElement {
 
     connectedCallback() {
@@ -33,8 +34,6 @@ class Login extends HTMLElement {
         };
 
         console.log('payload=' + JSON.stringify(payload, "", 4));
-
-
         const settings = {
             method: 'POST',
             headers: {
@@ -44,51 +43,19 @@ class Login extends HTMLElement {
             body: JSON.stringify(payload, "", 4)
         };
 
-        const response = await fetch(serverUri + "/login", settings);
+        const response = await fetch(serverUrl + "/login", settings);
         const json = await response.json();
         console.log(json)
         if (response.status !== 200) {
             toast('Login failed, please retry....', 'error');
             usernameEl.value = '';
             passwordEl.value = '';
-
-            delay();
-            window.location.assign(serverUri);
+            window.location.assign(serverUrl);
             return;
         }
         console.log('JSON=' + json);
-
         toast('Login successful', 'info');
-        delay();
-
-        window.location.assign(serverUri + "/passgenerator.html");
+        window.location.assign(serverUrl + "/generator.html");
     };
 }
-
-
-
 customElements.define('login-wc', Login);
-
-function toast(msg, type) {
-    const Toast = Swal.mixin({
-        toast: true,
-        position: 'top-end',
-        showConfirmButton: false,
-        timer: 3000,
-        timerProgressBar: true,
-        didOpen: (toast) => {
-            toast.addEventListener('mouseenter', Swal.stopTimer)
-            toast.addEventListener('mouseleave', Swal.resumeTimer)
-        }
-    })
-
-    Toast.fire({
-        icon: type,
-        title: msg,
-    })
-}
-
-const delay = async() => {
-    await sleep(5000);
-    //code to be executed
-}

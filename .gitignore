@@ -44,3 +44,4 @@ buildNumber.properties
 
 # Local environment configurazione file
 /bin/
+/.apt_generated_tests/
