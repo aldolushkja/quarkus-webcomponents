@@ -1,5 +1,5 @@
 import { html, render } from '../../deps/lit-html.js';
-import { toast } from '../service/Commons.js';
+import { toast, customAlert } from '../service/Notifications.js';
 import { serverUrl } from '../service/Constants.js';
 
 class Login extends HTMLElement {
@@ -47,14 +47,14 @@ class Login extends HTMLElement {
         const json = await response.json();
         console.log(json)
         if (response.status !== 200) {
-            toast('Login failed, please retry....', 'error');
+            customAlert('Login failed, please retry....', 'error');
             usernameEl.value = '';
             passwordEl.value = '';
             // window.location.assign(serverUrl);
             return;
         }
         console.log('JSON=' + json);
-        toast('Login successful', 'info');
+        customAlert('Login successful', 'info');
         window.location.assign(serverUrl + "/generator.html");
     };
 }

@@ -1,5 +1,5 @@
 import { html, render } from '../../deps/lit-html.js';
-import { toast } from '../service/Commons.js';
+import { toast } from '../service/Notifications.js';
 import { serverUrl } from '../service/Constants.js';
 import { sendData, generatePassword } from '../service/PasswordService.js';
 

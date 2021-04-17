@@ -1,5 +1,5 @@
 import { serverUrl } from "./Constants.js";
-import { toast, buildConfetti } from "./Commons.js";
+import { toast, buildConfetti } from "./Notifications.js";
 
 //Send password Form inputs to Backend
 async function sendData(pwd) {
