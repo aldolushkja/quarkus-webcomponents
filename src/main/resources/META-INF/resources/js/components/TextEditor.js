@@ -15,15 +15,13 @@ class TextEditor extends HTMLElement {
         <div id="loading" class="hide"></div>
         <div id="form" class="flex-container custom-font">
             <h1>Crea un nuovo post</h1>
-    
-            <label for="title>Titolo</label>
-            <input type="text" id="title" name="title"></input>
+
             <textarea name="editor1" id="editor1" rows="10" cols="80">
                 This is my textarea to be replaced with CKEditor 4.
             </textarea>
             <div style="display:flex; flex-direction:column; align-items: center; justify-content: center;" id="id">
-                <h2>Mirror Content</h2>
-                <div id="content"></div>
+                <h2>Anteprima</h2>
+                <div id="content" style ="border: 1px solid lightblue;"></div>
                 <button id="save" class="save-btn" @click=${this.saveContent}>Save content</button>
             </div>
         </div>
@@ -55,7 +53,6 @@ class TextEditor extends HTMLElement {
         };
 
         var content = CKEDITOR.instances.editor1.getData();
-        var title = document.getElementById('title').value;
         console.log('>>>> Save : ' + content);
 
         payload.title = "Sample title";
