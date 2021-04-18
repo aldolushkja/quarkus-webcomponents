@@ -43,10 +43,7 @@ class Home extends HTMLElement {
 </div>`;
         render(template, this);
     }
-    handleSearchClick() {
-        var input = document.getElementById('search-txt');
-        console.log("search with text: " + input.value);
-    }
+
 
 }
 
