@@ -1,4 +1,4 @@
-package it.aldolushkja.passgenerator;
+package it.aldolushkja.passgenerator.security;
 
 import javax.json.bind.annotation.JsonbProperty;
 import lombok.AllArgsConstructor;

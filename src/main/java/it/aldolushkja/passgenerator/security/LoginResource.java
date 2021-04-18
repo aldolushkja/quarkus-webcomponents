@@ -1,4 +1,4 @@
-package it.aldolushkja.passgenerator;
+package it.aldolushkja.passgenerator.security;
 
 import javax.json.Json;
 import javax.json.JsonObject;

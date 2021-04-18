@@ -1,4 +1,4 @@
-package it.aldolushkja.passgenerator;
+package it.aldolushkja.passgenerator.security;
 
 import org.apache.commons.lang3.RandomStringUtils;
 
