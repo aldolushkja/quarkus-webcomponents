@@ -16,4 +16,5 @@ router.setRoutes([
     { path: '/posts', component: 'x-posts-new' },
     { path: '/passwords', component: 'x-passwords-new' },
     { path: '/login', component: 'x-login-view' },
+    { path: '(.*)', component: 'x-not-found-view' },
 ]);
