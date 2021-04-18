@@ -12,7 +12,6 @@ class NewPost extends HTMLElement {
     connectedCallback() {
         const template = html `
         <csrf-token></csrf-token>
-        <div id="loading" class="hide"></div>
         <div id="form" class="flex-container custom-font">
             <h1 style="margin-top: -3rem;margin-bottom: 2rem;">Crea un nuovo post</h1>
 

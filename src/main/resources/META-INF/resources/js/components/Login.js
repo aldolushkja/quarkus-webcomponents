@@ -8,7 +8,6 @@ class Login extends HTMLElement {
         var content = html `
 	<div class="container">
         <csrf-token></csrf-token>
-        <h2>Login</h2>
         <div class="login-container">
             <label for="username">Username</label> 
                 <input type="text" id="username"></input>
@@ -55,7 +54,7 @@ class Login extends HTMLElement {
         }
         console.log('JSON=' + json);
         customAlert('Login successful', 'info');
-        window.location.assign(serverUrl + "/home.html");
+        window.location.assign(serverUrl);
     };
 }
-customElements.define('login-wc', Login);
+customElements.define('x-login-view', Login);
