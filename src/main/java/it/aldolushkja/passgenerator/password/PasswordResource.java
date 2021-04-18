@@ -1,4 +1,4 @@
-package it.aldolushkja.passgen;
+package it.aldolushkja.passgenerator.password;
 
 import lombok.extern.slf4j.Slf4j;
 

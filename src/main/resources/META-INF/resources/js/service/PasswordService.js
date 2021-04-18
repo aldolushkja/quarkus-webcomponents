@@ -1,5 +1,5 @@
 import { serverUrl } from "./Constants.js";
-import { toast, buildConfetti } from "./Notifications.js";
+import { toast, buildConfetti, customAlert } from "./Notifications.js";
 
 //Send password Form inputs to Backend
 async function sendData(pwd) {
@@ -16,7 +16,7 @@ async function sendData(pwd) {
         toast('Password saved', 'success');
         buildConfetti();
     } else {
-        toast('Ops! Something went wrong :-(', 'error');
+        customAlert('Ops! Something went wrong :-(', 'error');
     }
 }
 

@@ -1,6 +1,6 @@
 import { serverUrl } from "../service/Constants.js";
 
-class CSRFToken extends HTMLElement {
+class TokenProvider extends HTMLElement {
     constructor() {
         super();
         this.token = "";
@@ -25,4 +25,4 @@ class CSRFToken extends HTMLElement {
     }
 }
 
-customElements.define("csrf-token", CSRFToken);
+customElements.define("csrf-token", TokenProvider);

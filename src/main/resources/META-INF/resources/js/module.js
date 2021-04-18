@@ -1,5 +1,7 @@
-import "./components/CSRFToken.js";
+import "./components/TokenProvider.js";
 import "./components/Login.js";
-import "./components/Generator.js";
+import "./components/PassGenerator.js";
+
+
 import "./service/Notifications.js";
 import "./service/Constants.js";

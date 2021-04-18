@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,300;1,400&display=swap" rel="stylesheet">
+
+    <title>Text Editor</title>
+
+    <style>
+        .custom-font {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.2rem;
+        }
+        
+        .flex-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin: 1rem;
+            padding: 2rem;
+        }
+        
+        #loading {
+            background: url('spinner.gif') no-repeat center center;
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            z-index: 9999999;
+        }
+        
+        .hide {
+            display: none;
+        }
+        
+        .save-btn {
+            padding: 1rem;
+            font-size: 1rem;
+            font-family: 'Montserrat', sans-serif;
+            box-shadow: 0.8rem 0.8rem lightgray;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="loading" class="hide"></div>
+
+    <div id="form" class="flex-container custom-font">
+        <h1>Insert your custom content</h1>
+
+        <textarea name="editor1" id="editor1" rows="10" cols="80">
+            This is my textarea to be replaced with CKEditor 4.
+        </textarea>
+        <div style="display:flex; flex-direction:column; align-items: center; justify-content: center;" id="id">
+            <h2>Mirror Content</h2>
+            <div id="content"></div>
+
+            <button id="save" class="save-btn">Save content</button>
+        </div>
+    </div>
+
+    <texteditor-wc></texteditor-wc>
+
+    <script src="//cdn.ckeditor.com/4.16.0/full/ckeditor.js"></script>
+
+    <script>
+        // Replace the <textarea id="editor1"> with a CKEditor 4
+        // instance, using default configuration.
+        var editor = CKEDITOR.replace('editor1');
+        var saveContentBtn = document.getElementById('save');
+
+        // The "change" event is fired whenever a change is made in the editor.
+        editor.on('change', function(evt) {
+            // showLoader();
+            console.log('Total bytes: ' + evt.editor.getData().length);
+            console.log('Content: ' + evt.editor.getData());
+            document.getElementById('content').innerHTML = evt.editor.getData();
+            // hideLoader();
+        });
+
+        // The "click" event is fired whenever a save button is clicked.
+        // saveContentBtn.addEventListener('click', function(evt) {
+        //     console.log('>>>> Save : ' + editor.getData());
+        // });
+
+        // showLoader() {
+        //     document.getElementById('loading').classList.add('hide');
+        // };
+        // hideLoader() {
+        //     document.getElementById('loading').classList.remove('hide');
+        // };
+
+
+        // showLoader();
+        // hideLoader();
+    </script>
+</body>
+
+</html>

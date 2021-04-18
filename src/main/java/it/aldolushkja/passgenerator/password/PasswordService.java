@@ -1,4 +1,4 @@
-package it.aldolushkja.passgen;
+package it.aldolushkja.passgenerator.password;
 
 import at.favre.lib.crypto.bcrypt.BCrypt;
 
