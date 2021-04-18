@@ -55,7 +55,7 @@ class Login extends HTMLElement {
         }
         console.log('JSON=' + json);
         customAlert('Login successful', 'info');
-        window.location.assign(serverUrl + "/generator.html");
+        window.location.assign(serverUrl + "/home.html");
     };
 }
 customElements.define('login-wc', Login);

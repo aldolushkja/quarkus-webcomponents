@@ -3,7 +3,7 @@ import { toast, customAlert } from '../service/Notifications.js';
 import { serverUrl } from '../service/Constants.js';
 
 
-class TextEditor extends HTMLElement {
+class NewPost extends HTMLElement {
 
 
     constructor() {
@@ -14,7 +14,7 @@ class TextEditor extends HTMLElement {
         <csrf-token></csrf-token>
         <div id="loading" class="hide"></div>
         <div id="form" class="flex-container custom-font">
-            <h1>Crea un nuovo post</h1>
+            <h1 style="margin-top: -3rem;margin-bottom: 2rem;">Crea un nuovo post</h1>
 
             <textarea name="editor1" id="editor1" rows="10" cols="80">
                 This is my textarea to be replaced with CKEditor 4.
@@ -26,6 +26,8 @@ class TextEditor extends HTMLElement {
             </div>
         </div>
     
+
+
         `;
 
         render(template, this);
@@ -48,6 +50,7 @@ class TextEditor extends HTMLElement {
 
         var payload = {
             "token": "",
+            "post_id": "",
             "title": "",
             "content": "",
         };
@@ -55,6 +58,7 @@ class TextEditor extends HTMLElement {
         var content = CKEDITOR.instances.editor1.getData();
         console.log('>>>> Save : ' + content);
 
+        payload.id === "" ? "" : payload.id;
         payload.title = "Sample title";
         payload.content = content;
         payload.token = document.getElementById('csrf_token').innerText;
@@ -88,4 +92,4 @@ class TextEditor extends HTMLElement {
     // };
 }
 
-customElements.define('texteditor-wc', TextEditor)
+customElements.define('x-posts-new', NewPost)

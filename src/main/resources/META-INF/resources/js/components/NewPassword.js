@@ -14,7 +14,7 @@ const generateEl = document.getElementById('generate')
 const clipboardEl = document.getElementById('clipboard')
 const saveEl = document.getElementById('save')
 
-class Generator extends HTMLElement {
+class PasswordGenerator extends HTMLElement {
     connectedCallback() {
         const template = html `
         <div class="container">
@@ -103,4 +103,4 @@ class Generator extends HTMLElement {
 
 }
 
-customElements.define('password-wc', Generator)
+customElements.define('x-passwords-new', PasswordGenerator);

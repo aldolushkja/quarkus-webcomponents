@@ -1,5 +1,6 @@
 {
   "imports": {
+    "@vaadin/router": "./@vaadin/router.js",
     "canvas-confetti": "./canvas-confetti.js",
     "lit-html": "./lit-html.js",
     "notie": "./notie.js"

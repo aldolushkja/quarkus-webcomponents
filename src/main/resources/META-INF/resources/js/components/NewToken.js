@@ -15,7 +15,7 @@ class TokenProvider extends HTMLElement {
     async fetchCsrfToken() {
         const response = await fetch(serverUrl + "/csrf-token");
         if (response.status !== 200) {
-            console.log("No token available, invalid form submit")
+            console.log("No token available, invalid form submit");
             return;
         }
         const json = await response.json();

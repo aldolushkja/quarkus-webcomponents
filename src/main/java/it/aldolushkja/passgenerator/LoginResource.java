@@ -15,25 +15,25 @@ import javax.ws.rs.core.Response;
 public class LoginResource {
 
 
-    @POST
-    public Response doLogin(JsonObject payload) {
-        String token = payload.getString("csrf_token");
-        String username = payload.getString("username");
-        String password = payload.getString("password");
-        System.out.println("LoginResource.doLogin()---- token=" + token);
-        if (token == null || token.trim().length() == 0 || username == null
-                || username.trim().length() == 0 || password == null
-                || password.trim().length() == 0) {
-            return Response
-                    .status(400).entity(Json.createObjectBuilder()
-                            .add("message", "Richiesta non valida").add("status", "KO").build())
-                    .build();
+        @POST
+        public Response doLogin(JsonObject payload) {
+                String token = payload.getString("csrf_token");
+                String username = payload.getString("username");
+                String password = payload.getString("password");
+                System.out.println("LoginResource.doLogin()---- token=" + token);
+                if (token == null || token.trim().length() == 0 || username == null
+                                || username.trim().length() == 0 || password == null
+                                || password.trim().length() == 0) {
+                        return Response.status(400)
+                                        .entity(Json.createObjectBuilder()
+                                                        .add("message", "Richiesta non valida")
+                                                        .add("status", "KO").build())
+                                        .build();
+                }
+
+
+                return Response.status(200).entity(Json.createObjectBuilder()
+                                .add("message", "Login effettato").add("status", "OK")).build();
         }
-
-
-        return Response.status(200).entity(
-                Json.createObjectBuilder().add("message", "Login effettato").add("status", "OK"))
-                .build();
-    }
 
 }
