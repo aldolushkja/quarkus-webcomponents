@@ -45,3 +45,8 @@ buildNumber.properties
 # Local environment configurazione file
 /bin/
 /.apt_generated_tests/
+.factorypath
+.env
+build.sh
+build.bat
+*.iml
