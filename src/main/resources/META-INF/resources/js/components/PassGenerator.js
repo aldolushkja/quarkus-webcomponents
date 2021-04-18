@@ -103,4 +103,4 @@ class Generator extends HTMLElement {
 
 }
 
-customElements.define('password-generator', Generator)
+customElements.define('password-wc', Generator)

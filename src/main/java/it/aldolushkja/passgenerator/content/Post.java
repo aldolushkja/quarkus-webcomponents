@@ -1,6 +1,7 @@
 package it.aldolushkja.passgenerator.content;
 
 import java.time.LocalDateTime;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
@@ -9,6 +10,7 @@ import io.quarkus.hibernate.orm.panache.PanacheEntity;
 @Table(name = "POST")
 public class Post extends PanacheEntity {
 
+    @Column(unique = true)
     public String title;
     public String content;
 
@@ -16,5 +18,4 @@ public class Post extends PanacheEntity {
     public String createdBy;
     public LocalDateTime lastUpdatedAt;
     public String lastUpdatedBy;
-
 }
